@@ -1,0 +1,14 @@
+#!name=Network Optimize
+#!desc=Optimize network routing for better performance
+#!system=SYSTEM
+
+[Rule]
+DOMAIN-SUFFIX,instagram.com,DIRECT
+DOMAIN-SUFFIX,cdninstagram.com,DIRECT
+DOMAIN-SUFFIX,instagr.am,DIRECT
+DOMAIN-SUFFIX,youtube.com,DIRECT
+DOMAIN-SUFFIX,youtu.be,DIRECT
+DOMAIN-SUFFIX,yt.be,DIRECT
+DOMAIN-SUFFIX,ytimg.com,DIRECT
+DOMAIN-SUFFIX,googlevideo.com,DIRECT
+DOMAIN-SUFFIX,youtube-nocookie.com,DIRECT
