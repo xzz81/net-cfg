@@ -1,0 +1,57 @@
+# ============================================
+# 家长控制 - 以下网站强制直连（大陆无法访问）
+# 修改后 push 到 GitHub 即可生效
+# ============================================
+
+# --- Instagram ---
+DOMAIN-SUFFIX,instagram.com
+DOMAIN-SUFFIX,cdninstagram.com
+DOMAIN-SUFFIX,instagr.am
+DOMAIN-SUFFIX,fbsbx.com
+
+# --- YouTube ---
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,yt.be
+DOMAIN-SUFFIX,ytimg.com
+DOMAIN-SUFFIX,googlevideo.com
+DOMAIN-SUFFIX,youtube-nocookie.com
+DOMAIN-SUFFIX,youtube-ui.l.google.com
+
+# --- 如需屏蔽更多，取消注释即可 ---
+
+# --- TikTok ---
+# DOMAIN-SUFFIX,tiktok.com
+# DOMAIN-SUFFIX,tiktokv.com
+# DOMAIN-SUFFIX,tiktokcdn.com
+
+# --- Twitter/X ---
+# DOMAIN-SUFFIX,twitter.com
+# DOMAIN-SUFFIX,x.com
+# DOMAIN-SUFFIX,twimg.com
+# DOMAIN-SUFFIX,t.co
+
+# --- Telegram ---
+# DOMAIN-SUFFIX,telegram.org
+# DOMAIN-SUFFIX,t.me
+# DOMAIN-SUFFIX,tg.dev
+
+# --- Snapchat ---
+# DOMAIN-SUFFIX,snapchat.com
+# DOMAIN-SUFFIX,snap.com
+
+# --- Reddit ---
+# DOMAIN-SUFFIX,reddit.com
+# DOMAIN-SUFFIX,redd.it
+# DOMAIN-SUFFIX,redditmedia.com
+
+# --- Discord ---
+# DOMAIN-SUFFIX,discord.com
+# DOMAIN-SUFFIX,discord.gg
+# DOMAIN-SUFFIX,discordapp.com
+
+# --- 成人内容 ---
+# DOMAIN-SUFFIX,pornhub.com
+# DOMAIN-SUFFIX,xvideos.com
+# DOMAIN-SUFFIX,xhamster.com
+# DOMAIN-SUFFIX,xnxx.com

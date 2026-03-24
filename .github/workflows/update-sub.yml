@@ -1,0 +1,58 @@
+name: Update Subscription
+
+on:
+  # 每6小时自动更新一次
+  schedule:
+    - cron: '0 */6 * * *'
+  # 手动触发（改了规则后可以立即生效）
+  workflow_dispatch:
+  # 推送到 main 分支时也触发
+  push:
+    branches: [main]
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run subconverter
+        run: |
+          docker run -d --name subconverter \
+            -p 25500:25500 \
+            tindy2013/subconverter:latest
+          sleep 3
+
+          # 复制自定义规则和配置到容器
+          docker cp rules/block_sites.list subconverter:/base/rules/
+          docker cp config/child.ini subconverter:/base/config/
+
+          # 重启让配置生效
+          docker restart subconverter
+          sleep 3
+
+      - name: Generate Shadowrocket config
+        env:
+          SUB_URL: ${{ secrets.SUB_URL }}
+        run: |
+          ENCODED_URL=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$SUB_URL', safe=''))")
+          CONFIG_URL="config%2Fchild.ini"
+
+          curl -sL "http://localhost:25500/sub?target=shadowrocket&url=${ENCODED_URL}&config=${CONFIG_URL}" \
+            -o output/shadowrocket.txt
+
+          # 验证输出不为空
+          if [ ! -s output/shadowrocket.txt ]; then
+            echo "Error: Generated config is empty!"
+            exit 1
+          fi
+
+          echo "Generated config size: $(wc -c < output/shadowrocket.txt) bytes"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git diff --staged --quiet || git commit -m "Update subscription $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
